@@ -1,0 +1,45 @@
+// Class with encapsulation
+class Employee {
+    // Private data members
+    private String name;
+    private int salary;
+
+    // Public getter method for name
+    public String getName() {
+        return name;
+    }
+
+    // Public setter method for name
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Public getter method for salary
+    public int getSalary() {
+        return salary;
+    }
+
+    // Public setter method for salary
+    public void setSalary(int salary) {
+        if (salary > 0) {
+            this.salary = salary;
+        } else {
+            System.out.println("Invalid salary amount.");
+        }
+    }
+}
+
+// Main class to test encapsulation
+public class Main {
+    public static void main(String[] args) {
+        Employee emp = new Employee();
+
+        // Setting values using setters
+        emp.setName("Anjali");
+        emp.setSalary(50000);
+
+        // Getting values using getters
+        System.out.println("Employee Name: " + emp.getName());
+        System.out.println("Employee Salary: " + emp.getSalary());
+    }
+}
