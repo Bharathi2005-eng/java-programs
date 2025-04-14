@@ -1,0 +1,24 @@
+public class Main {
+
+    // Method that declares an exception using 'throws'
+    static void checkAge(int age) throws ArithmeticException {
+        if (age < 18) {
+            // Throwing an exception using 'throw'
+            throw new ArithmeticException("Access denied – You must be at least 18 years old.");
+        } else {
+            System.out.println("Access granted – You are old enough!");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            // Calling the method with an age that will trigger exception
+            checkAge(15);
+        } catch (ArithmeticException e) {
+            // Handling the exception
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+
+        System.out.println("Program continues after exception handling.");
+    }
+}
