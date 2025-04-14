@@ -1,0 +1,47 @@
+class Counter {
+    private int count = 0;
+
+    // Synchronizing the increment method to ensure thread safety
+    public synchronized void increment() {
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+class MyThread extends Thread {
+    Counter counter;
+
+    MyThread(Counter counter) {
+        this.counter = counter;
+    }
+
+    public void run() {
+        for (int i = 0; i < 1000; i++) {
+            counter.increment();  // Incrementing the shared resource
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        Counter counter = new Counter();
+
+        // Creating multiple threads that share the same counter object
+        MyThread t1 = new MyThread(counter);
+        MyThread t2 = new MyThread(counter);
+
+        // Starting the threads
+        t1.start();
+        t2.start();
+
+        // Waiting for both threads to complete
+        t1.join();
+        t2.join();
+
+        // Output the final value of the shared resource
+        System.out.println("Final count: " + counter.getCount());
+    }
+}
