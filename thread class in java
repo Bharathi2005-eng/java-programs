@@ -1,0 +1,22 @@
+// Creating a custom thread by extending the Thread class
+class MyThread extends Thread {
+    // Overriding the run() method to define the code to be executed by the thread
+    public void run() {
+        System.out.println("Thread is running: " + Thread.currentThread().getId());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating thread objects
+        MyThread thread1 = new MyThread();
+        MyThread thread2 = new MyThread();
+
+        // Starting the threads
+        thread1.start();
+        thread2.start();
+
+        // Output the main thread's ID
+        System.out.println("Main thread ID: " + Thread.currentThread().getId());
+    }
+}
